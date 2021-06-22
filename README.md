@@ -4,10 +4,11 @@ A Quasar Framework app
 
 ## Install the dependencies
 ```bash
-yarn
+yarn global add @quasar/cli
+npm install -g @quasar/cli
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Start the app in development servidor)
 ```bash
 quasar dev
 ```

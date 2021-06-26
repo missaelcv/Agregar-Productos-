@@ -2,7 +2,7 @@
     <q-page>
         <h4>Agregar Productos</h4>
 
-        <pre>{{productos}} - {{seleccion}}</pre>
+        <pre>{{productos}} - {{seleccion}} - {{terminos}}</pre>
 
          <q-form 
          class="row q-col-gutter-md"
@@ -13,6 +13,7 @@
             <q-input  
             label="Productos" 
             v-model="productos"
+            :rules="[ val => val && val.length > 0 || 'No puede Estar el blanco']"
           
             
             />
@@ -23,7 +24,16 @@
              label="Prioridad" 
              v-model="seleccion"
             :options = "opciones"
+             :rules="[ val => val && val.length > 0 || 'Please type something']"
              />    
+        </div>
+
+        <div class="col-12 col-sm-6">
+
+        <q-toggle
+        label="Acepta los terminos"
+        v-model="terminos"
+        />
         </div>
 
         <div class="col-12">
@@ -53,6 +63,7 @@ export default {
     setup() {
         const productos = ref(null)
         const seleccion = ref(null)
+        const terminos = ref (false)
         const opciones = ['maxima', 'media', 'minima']
         const procesarFormulario = () => {
                 console.log("clic al Formulario")
@@ -63,7 +74,8 @@ export default {
                 productos,
                 seleccion,
                 opciones,
-                procesarFormulario
+                procesarFormulario,
+                terminos
                
     }
 },

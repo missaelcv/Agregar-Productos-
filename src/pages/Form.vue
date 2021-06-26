@@ -4,7 +4,10 @@
 
         <pre>{{productos}} - {{seleccion}}</pre>
 
-         <q-form class="row q-col-gutter-md">
+         <q-form 
+         class="row q-col-gutter-md"
+         @submit.prevent="procesarFormulario"
+         >
 
          <div class="col-12 col-sm-6">
             <q-input  
@@ -51,12 +54,16 @@ export default {
         const productos = ref(null)
         const seleccion = ref(null)
         const opciones = ['maxima', 'media', 'minima']
+        const procesarFormulario = () => {
+                console.log("clic al Formulario")
+        }
       
 
         return {
                 productos,
                 seleccion,
-                opciones
+                opciones,
+                procesarFormulario
                
     }
 },

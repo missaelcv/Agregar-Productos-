@@ -7,6 +7,7 @@
          <q-form 
          class="row q-col-gutter-md"
          @submit.prevent="procesarFormulario"
+         @reset="reset"
          >
 
          <div class="col-12 col-sm-6">
@@ -65,8 +66,18 @@ export default {
         const seleccion = ref(null)
         const terminos = ref (false)
         const opciones = ['maxima', 'media', 'minima']
+
         const procesarFormulario = () => {
                 console.log("clic al Formulario")
+                if(terminos.value === false){
+                    alert('Falto Seleccionar los Terminos')
+                }
+        }
+        const reset = () => {
+            productos.value = null
+            seleccion.value = null
+            terminos.value = false 
+
         }
       
 
@@ -75,7 +86,8 @@ export default {
                 seleccion,
                 opciones,
                 procesarFormulario,
-                terminos
+                terminos,
+                reset
                
     }
 },

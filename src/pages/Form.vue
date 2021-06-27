@@ -57,15 +57,19 @@
         />
             </div>
         </q-form>
+
+       <pintar-datos/>
+
     </q-page>
 </template>
 
 <script>
 import {ref} from 'vue'
 import { useQuasar } from 'quasar'
-import { Notify } from 'quasar'
+import PintarDatos from 'src/components/PintarDatos.vue'
 
 export default {
+  components: { PintarDatos },
     setup() {
         const myForm = ref(null)
        const $q = useQuasar()
@@ -74,10 +78,7 @@ export default {
         const terminos = ref (false)
         const opciones = ['maxima', 'media', 'minima']
 
-        Notify.create({
-        message: 'Danger, Will Robinson! Danger!'
-        })
-
+       
         const procesarFormulario = () => {
                 console.log("clic al Formulario")
                 if(terminos.value === false){
@@ -85,14 +86,14 @@ export default {
                          color: 'red-5',
                             textColor: 'white',
                             icon: 'warning',
-                            message: 'You need to accept the license and terms first'
+                            message: 'Debe Aceptar Terminos y Condiciones'
                      })
                 } else {
                  $q.notify({
                 color: 'green-4',
                 textColor: 'white',
                 icon: 'cloud_done',
-                message: 'Submitted'
+                message: 'Formulario Enviado'
                     })
                  myForm.value.resetValidation()
                     reset()

@@ -3,7 +3,7 @@
 A Quasar Framework app
 
 ## Install the dependencies
-```bash
+``` javascript
 yarn global add @quasar/cli
 npm install -g @quasar/cli
 ```

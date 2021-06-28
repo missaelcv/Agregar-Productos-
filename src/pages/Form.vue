@@ -2,7 +2,7 @@
     <q-page>
         <h4>Agregar Productos</h4>
 
-        <pre>{{productos}} - {{seleccion}} - {{terminos}}</pre>
+        <pre>{{producto}} - {{seleccion}} - {{terminos}}</pre>
 
          <q-form 
          class="row q-col-gutter-md"
@@ -13,8 +13,8 @@
 
          <div class="col-12 col-sm-6">
             <q-input  
-            label="Productos" 
-            v-model="productos"
+            label="productos" 
+            v-model="producto"
               lazy-rules
             :rules="[ val => val && val.length > 0 || 'No puede Estar el blanco']"
           
@@ -58,7 +58,7 @@
             </div>
         </q-form>
 
-       <pintar-datos/>
+       <pintar-datos :productos="productos" />
 
     </q-page>
 </template>
@@ -73,10 +73,12 @@ export default {
     setup() {
         const myForm = ref(null)
        const $q = useQuasar()
-        const productos = ref(null)
+        const producto = ref(null)
         const seleccion = ref(null)
         const terminos = ref (false)
         const opciones = ['maxima', 'media', 'minima']
+
+       const productos = ref([])
 
        
         const procesarFormulario = () => {
@@ -95,27 +97,34 @@ export default {
                 icon: 'cloud_done',
                 message: 'Formulario Enviado'
                     })
-                 myForm.value.resetValidation()
-                    reset()
+
+                 myForm.value.resetValidation()       
+                  
+
+                  //Procesar el Formulario
+                  productos.value =[...productos.value,{
+                      producto: producto.value,
+                      prioridad: seleccion.value
+                  }]
+                  reset() 
                 }
         }
         const reset = () => {
-            productos.value = null
+            producto.value = null
             seleccion.value = null
             terminos.value = false 
  
         } 
-     
-
         return {
-                productos,
+                producto,
                 seleccion,
                 opciones,
                 procesarFormulario,
                 terminos,
                 reset,
-                myForm
-               
+                myForm,
+                productos
+        
     }
 },
 }

@@ -8,18 +8,14 @@
          class="row q-col-gutter-md"
          @submit.prevent="procesarFormulario"
          @reset="reset"
-         ref="myForm"
-         >
+         ref="myForm">
 
          <div class="col-12 col-sm-6">
             <q-input  
             label="productos" 
             v-model="producto"
               lazy-rules
-            :rules="[ val => val && val.length > 0 || 'No puede Estar el blanco']"
-          
-            
-            />
+            :rules="[ val => val && val.length > 0 || 'No puede Estar el blanco']"/>
         </div>
 
         <div class="col-12 col-sm-6">
@@ -28,16 +24,14 @@
              v-model="seleccion"
             :options = "opciones"
               lazy-rules
-             :rules="[ val => val && val.length > 0 || 'Please type something']"
-             />    
+             :rules="[ val => val && val.length > 0 || 'Please type something']" />    
         </div>
 
         <div class="col-12 col-sm-6">
 
         <q-toggle
         label="Acepta los terminos"
-        v-model="terminos"
-        />
+        v-model="terminos"/>
         </div>
 
         <div class="col-12">
@@ -53,9 +47,8 @@
         outline
         class="q-ml-sm"
         :ripple="true"
-        type="reset"
-        />
-            </div>
+        type="reset"/>
+        </div>
         </q-form>
 
        <pintar-datos :productos="productos" />
@@ -77,10 +70,8 @@ export default {
         const seleccion = ref(null)
         const terminos = ref (false)
         const opciones = ['maxima', 'media', 'minima']
+        const productos = ref([])
 
-       const productos = ref([])
-
-       
         const procesarFormulario = () => {
                 console.log("clic al Formulario")
                 if(terminos.value === false){
@@ -124,8 +115,7 @@ export default {
                 reset,
                 myForm,
                 productos
-        
-    }
+               }
 },
 }
 </script>

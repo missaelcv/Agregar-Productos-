@@ -1,6 +1,6 @@
 <template>
 
- <pre>{{Productos}}</pre>
+ <pre>{{productos}}</pre>
 
      <q-table
      class="q-mt-md"
@@ -49,8 +49,6 @@ export default ({
      },
      setup() {
           return{
-
-          
           columns,
           rows
           }
